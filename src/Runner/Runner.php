@@ -168,6 +168,10 @@ class Runner
      */
     public function run()
     {
+        // Run bootstrap first
+        $bootstrapFile = self::$console->options['bootstrap'];
+        include_once($bootstrapFile);
+        
         // Get and instantiate the reporter class, load files
         $reporterClass = self::$console->getReporterClass();
         $this->reporter = new $reporterClass(self::$console);
